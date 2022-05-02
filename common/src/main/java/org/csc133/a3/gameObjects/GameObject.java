@@ -7,7 +7,7 @@ import com.codename1.ui.geom.Point;
 import org.csc133.a3.interfaces.Drawable;
 
 public abstract class GameObject implements Drawable {
-    private Transform myTranslation,myRotation,myScale;
+    private Transform myTranslation, myRotation, myScale;
     private int myColor;
 
     private Point location;
@@ -15,11 +15,11 @@ public abstract class GameObject implements Drawable {
     private int color;
     private Dimension worldSize;
 
-//    public GameObject(){
-//        myTranslation = Transform.makeIdentity();
-//        myRotation = Transform.makeIdentity();
-//        myScale = Transform.makeIdentity();
-//    }
+    public GameObject(){
+        myTranslation = Transform.makeIdentity();
+        myRotation = Transform.makeIdentity();
+        myScale = Transform.makeIdentity();
+    }
 
     public void setLocation(Point location){ this.location = location; }
 
@@ -40,41 +40,42 @@ public abstract class GameObject implements Drawable {
     }
 
     public void rotate(double degrees) {
-        myRotation.rotate((float) Math.toRadians(degrees), 0, 0);
+        myRotation.rotate((float)Math.toRadians(degrees), 0, 0);
     }
 
     public void scale(double sx, double sy) {
-        myScale.scale((float) sx, (float) sy);
+        myScale.scale((float)sx, (float)sy);
     }
 
     public void translate(double tx, double ty) {
-        myTranslation.translate((float) tx, (float) ty);
+        myTranslation.translate((float)tx, (float)ty);
     }
 
-//    private Transform gOrigXForm;
-//    Transform preLTTransform(Graphics g, Point originScreen){
-//        Transform gXForm = Transform.makeIdentity();
-//        //get the current transform and save it
-//        //preLT Transform
-//
-//        g.getTransform(gXForm);
-//        Transform gOrigXForm = gXForm.copy();
-//        //move the drawing coordinats back
-//        gXForm.translate(originScreen.getX(),originScreen.getY());
-//        return gXForm;
-//    }
-//    void postLTTransform(Graphics g, Point originScreen, Transform gXForm) {
-//        //move the drawing coordintates sp that the local origin coincides withthe screen origin
-//        //post local trnasforms
-//        gXForm.translate(-originScreen.getX(),-originScreen.getY());
-//        g.setTransform(gXForm);
-//    }
-//
-//    void restoreOriginalTransforms(Graphics g) {
-//        //restrore the original xform
-//        g.setTransform(gOrigXForm);
-//    }
-//
+    private Transform gOrigXForm;
+    Transform preLTTransform(Graphics g, Point originScreen){
+        Transform gXForm = Transform.makeIdentity();
+
+        //get the current transform and save it
+        g.getTransform(gXForm);
+        Transform gOrigXForm = gXForm.copy();
+
+        //move the drawing coordinates back
+        gXForm.translate(originScreen.getX(),originScreen.getY());
+        return gXForm;
+    }
+
+    void postLTTransform(Graphics g, Point originScreen, Transform gXForm) {
+        //move drawing coordinates so local origin coincides with screen origin
+        //post local transforms
+        gXForm.translate(-originScreen.getX(),-originScreen.getY());
+        g.setTransform(gXForm);
+    }
+
+    void restoreOriginalTransforms(Graphics g){
+        //restore original xform
+        g.setTransform(gOrigXForm);
+    }
+
     void localTransforms(Transform gXForm) {
         gXForm.translate(myTranslation.getTranslateX(),myTranslation.getTranslateY());
         gXForm.concatenate(myRotation);
@@ -102,15 +103,14 @@ public abstract class GameObject implements Drawable {
         g.setTransform(gxForm);
     }
 
-    public abstract void localDraw(Graphics g, Point parentOrigin, Point screenOrigin);
-//    abstract public void localDraw(Graphics g, Point originParent, Point originScreen);
-//    public void draw(Graphics g, Point originParent, Point originScreen) {
-//        //get the current transform and save it
-//        Transform gXForm = preLTTransform(g, originScreen);
-//        localTransforms(gXForm);
-//        postLTTransform(g, originScreen, gXForm);
-//        //restrore the original xform
-//        localDraw(g,originParent,originScreen);
-//        restoreOriginalTransforms(g);
-//    }
+    public abstract void localDraw(Graphics g, Point parentOrigin, Point originScreen);
+
+    public void draw(Graphics g, Point originParent, Point originScreen) {
+        //get the current transform and save it
+        Transform gXForm = preLTTransform(g, originScreen);
+        localTransforms(gXForm);
+        postLTTransform(g, originScreen, gXForm);
+        localDraw(g, originParent, originScreen);
+        restoreOriginalTransforms(g);
+    }
 }

@@ -174,7 +174,7 @@ public class Helicopter extends Movable implements Steerable {
             containerTranslate(g, parentOrigin);
             cn1ForwardPrimitiveTranslate(g, getDimension());
             g.drawArc(0, 0,
-                    getDimension().getWidth(), getDimension().getHeight()
+                    getDimension().getWidth(), getDimension().getHeight(),
                     135, 270);
         }
 
@@ -188,39 +188,39 @@ public class Helicopter extends Movable implements Steerable {
     private ArrayList<GameObject> heloParts;
 
     @Override
-    protected void localDraw(Graphics g, Point parentOrigin, Point screenOrigin){
+    public void localDraw(Graphics g, Point parentOrigin, Point screenOrigin){
         for (GameObject go : heloParts)
             go.draw(g, parentOrigin, screenOrigin);
         heloParts = new ArrayList<>();
     }
 
-    @Override
-    public void draw(Graphics g, Point containerOrigin) {
-        angle = Math.toRadians(heading()) + Math.PI / 2;
-
-        g.setColor(getColor());
-        g.setFont(Font.createSystemFont(FACE_SYSTEM, STYLE_BOLD, SIZE_MEDIUM));
-
-        // draw helicopter body and show stats
-        //
-        g.fillArc(containerOrigin.getX() + getLocation().getX(),
-                containerOrigin.getY() + getLocation().getY(), size, size,
-                0, 360);
-        g.drawString("F:  " + fuel,
-                containerOrigin.getX() + getLocation().getX() - size/2,
-                containerOrigin.getY() + getLocation().getY() + size*3);
-        g.drawString("W: " + water,
-                containerOrigin.getX() + getLocation().getX() - size / 2,
-                containerOrigin.getY() + getLocation().getY() + size * 4);
-
-        // use polar to coordinate conversion for heading line position
-        //
-        int heX = containerOrigin.getX() + center.getX()
-                + (int) (headingRadius * Math.cos(angle));
-        int heY = containerOrigin.getY() +
-                center.getY() - (int) (headingRadius * Math.sin(angle));
-
-        g.drawLine(containerOrigin.getX() + center.getX(),
-                containerOrigin.getY() + center.getY(), heX, heY);
-    }
+//    @Override
+//    public void draw(Graphics g, Point containerOrigin) {
+//        angle = Math.toRadians(heading()) + Math.PI / 2;
+//
+//        g.setColor(getColor());
+//        g.setFont(Font.createSystemFont(FACE_SYSTEM, STYLE_BOLD, SIZE_MEDIUM));
+//
+//        // draw helicopter body and show stats
+//        //
+//        g.fillArc(containerOrigin.getX() + getLocation().getX(),
+//                containerOrigin.getY() + getLocation().getY(), size, size,
+//                0, 360);
+//        g.drawString("F:  " + fuel,
+//                containerOrigin.getX() + getLocation().getX() - size/2,
+//                containerOrigin.getY() + getLocation().getY() + size*3);
+//        g.drawString("W: " + water,
+//                containerOrigin.getX() + getLocation().getX() - size / 2,
+//                containerOrigin.getY() + getLocation().getY() + size * 4);
+//
+//        // use polar to coordinate conversion for heading line position
+//        //
+//        int heX = containerOrigin.getX() + center.getX()
+//                + (int) (headingRadius * Math.cos(angle));
+//        int heY = containerOrigin.getY() +
+//                center.getY() - (int) (headingRadius * Math.sin(angle));
+//
+//        g.drawLine(containerOrigin.getX() + center.getX(),
+//                containerOrigin.getY() + center.getY(), heX, heY);
+//    }
 }
