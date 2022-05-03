@@ -20,6 +20,7 @@ public class Helicopter extends Movable implements Steerable {
     final private int MAX_SPEED = 10;
     final private int MAX_WATER = 1000;
     private static final int BUBBLE_RADIUS = 125;
+    private ArrayList<GameObject> heloParts;
 
     public Helicopter(Point helipadCenter, int initFuel, Dimension worldSize){
         setWorldSize(worldSize);
@@ -30,18 +31,23 @@ public class Helicopter extends Movable implements Steerable {
         angle = Math.toRadians(heading());
         size = worldSize.getHeight() / 40;
         headingRadius = size * 2;
+        heloParts = new ArrayList<>();
 
         center = new Point(helipadCenter.getX(), helipadCenter.getY() + size);
         setLocation(new Point(  center.getX() - size / 2,
                                     center.getY() - size / 2));
         setColor(ColorUtil.YELLOW);
         setDimension(new Dimension(size, size));
-    }
 
-    public Helicopter(Point lz){
+        // add parts to hierarchical helicopter
         heloParts = new ArrayList<>();
         heloParts.add(new HeloBubble());
     }
+
+//    public Helicopter(Point lz){
+//        heloParts = new ArrayList<>();
+//        heloParts.add(new HeloBubble());
+//    }
 
     @Override
     public void move() {
@@ -176,21 +182,13 @@ public class Helicopter extends Movable implements Steerable {
                     getDimension().getWidth(), getDimension().getHeight(),
                     135, 270);
         }
-
-        @Override
-        public void draw(Graphics g, Point containerOrigin) {
-
-        }
     }
     //-------------------------------------------------------------------------
-
-    private ArrayList<GameObject> heloParts;
 
     @Override
     public void localDraw(Graphics g, Point parentOrigin, Point screenOrigin){
         for (GameObject go : heloParts)
             go.draw(g, parentOrigin, screenOrigin);
-        heloParts = new ArrayList<>();
     }
 
 //    @Override

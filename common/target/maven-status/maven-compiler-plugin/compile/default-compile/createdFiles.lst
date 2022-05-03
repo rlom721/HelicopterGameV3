@@ -1,3 +1,4 @@
+org\csc133\a3\gameObjects\Helicopter$HeloBubble.class
 org\csc133\a3\views\GlassCockpit.class
 org\csc133\a3\commands\FightCommand.class
 org\csc133\a3\gameObjects\Movable.class

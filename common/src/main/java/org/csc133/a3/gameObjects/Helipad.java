@@ -31,14 +31,25 @@ public class Helipad extends Fixed{
 
     int circleDiameter() { return cSize; }
 
+//    @Override
+//    public void draw(Graphics g, Point containerOrigin) {
+//        g.setColor(getColor());
+//        g.drawRect( containerOrigin.getX() + getLocation().getX(),
+//                    containerOrigin.getY() + getLocation().getY(),
+//                        sSize, sSize, 5);
+//        g.drawArc(  containerOrigin.getX() + getLocation().getX() + cOffset/2,
+//                    containerOrigin.getY() + getLocation().getY() + cOffset/2,
+//                        cSize, cSize, 0, 360);
+//    }
+
     @Override
-    public void draw(Graphics g, Point containerOrigin) {
+    public void localDraw(Graphics g, Point parentOrigin, Point originScreen) {
         g.setColor(getColor());
-        g.drawRect( containerOrigin.getX() + getLocation().getX(),
-                    containerOrigin.getY() + getLocation().getY(),
-                        sSize, sSize, 5);
-        g.drawArc(  containerOrigin.getX() + getLocation().getX() + cOffset/2,
-                    containerOrigin.getY() + getLocation().getY() + cOffset/2,
-                        cSize, cSize, 0, 360);
+        g.drawRect( originScreen.getX() + getLocation().getX(),
+                originScreen.getY() + getLocation().getY(),
+                sSize, sSize, 5);
+        g.drawArc(  originScreen.getX() + getLocation().getX() + cOffset/2,
+                originScreen.getY() + getLocation().getY() + cOffset/2,
+                cSize, cSize, 0, 360);
     }
 }

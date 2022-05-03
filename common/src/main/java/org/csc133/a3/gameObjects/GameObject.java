@@ -55,18 +55,20 @@ public abstract class GameObject implements Drawable {
     Transform preLTTransform(Graphics g, Point originScreen){
         Transform gXForm = Transform.makeIdentity();
 
-        //get the current transform and save it
+        // get the current transform and save it
+        //
         g.getTransform(gXForm);
-        Transform gOrigXForm = gXForm.copy();
+        gOrigXForm = gXForm.copy();
 
-        //move the drawing coordinates back
+        // move the drawing coordinates back
+        //
         gXForm.translate(originScreen.getX(),originScreen.getY());
         return gXForm;
     }
 
     void postLTTransform(Graphics g, Point originScreen, Transform gXForm) {
-        //move drawing coordinates so local origin coincides with screen origin
-        //post local transforms
+        // move drawing coordinates so local origin coincides w/ screen origin
+        // post local transforms
         gXForm.translate(-originScreen.getX(),-originScreen.getY());
         g.setTransform(gXForm);
     }
@@ -77,7 +79,8 @@ public abstract class GameObject implements Drawable {
     }
 
     void localTransforms(Transform gXForm) {
-        gXForm.translate(myTranslation.getTranslateX(),myTranslation.getTranslateY());
+        gXForm.translate(myTranslation.getTranslateX(),
+                         myTranslation.getTranslateY());
         gXForm.concatenate(myRotation);
         gXForm.scale(myScale.getScaleX(),myScale.getScaleY());
     }
@@ -103,10 +106,11 @@ public abstract class GameObject implements Drawable {
         g.setTransform(gxForm);
     }
 
-    public abstract void localDraw(Graphics g, Point parentOrigin, Point originScreen);
+    public abstract void localDraw(Graphics g, Point parentOrigin,
+                                   Point originScreen);
 
     public void draw(Graphics g, Point originParent, Point originScreen) {
-        //get the current transform and save it
+        // get the current transform and save it
         Transform gXForm = preLTTransform(g, originScreen);
         localTransforms(gXForm);
         postLTTransform(g, originScreen, gXForm);

@@ -67,17 +67,32 @@ public class Building extends Fixed {
 
     public boolean isDestroyed() { return damage() >= 100; }
 
+//    @Override
+//    public void draw(Graphics g, Point containerOrigin) {
+//        g.setColor(getColor());
+//        g.drawRect(containerOrigin.getX() + getLocation().getX(),
+//                   containerOrigin.getY() + getLocation().getY(),
+//                        width(), height(), 5);
+//        g.drawString("V:  " + value,
+//                    containerOrigin.getX() + getLocation().getX() + width(),
+//                    containerOrigin.getY() + getLocation().getY() + height());
+//        g.drawString("D: " + damage() + "%",
+//                containerOrigin.getX() + getLocation().getX() + width(),
+//                containerOrigin.getY() + getLocation().getY() + height() + 30);
+//    }
+
     @Override
-    public void draw(Graphics g, Point containerOrigin) {
+    public void localDraw(Graphics g, Point parentOrigin, Point originScreen) {
         g.setColor(getColor());
-        g.drawRect(containerOrigin.getX() + getLocation().getX(),
-                   containerOrigin.getY() + getLocation().getY(),
-                        width(), height(), 5);
+        scale(-1, 1);
+        g.drawRect(originScreen.getX() + getLocation().getX(),
+                originScreen.getY() + getLocation().getY(),
+                width(), height(), 5);
         g.drawString("V:  " + value,
-                    containerOrigin.getX() + getLocation().getX() + width(),
-                    containerOrigin.getY() + getLocation().getY() + height());
+                originScreen.getX() + getLocation().getX() + width(),
+                originScreen.getY() + getLocation().getY() + height());
         g.drawString("D: " + damage() + "%",
-                containerOrigin.getX() + getLocation().getX() + width(),
-                containerOrigin.getY() + getLocation().getY() + height() + 30);
+                originScreen.getX() + getLocation().getX() + width(),
+                originScreen.getY() + getLocation().getY() + height() + 30);
     }
 }

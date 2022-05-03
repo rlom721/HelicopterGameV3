@@ -19,7 +19,7 @@ public class GameWorld{
     private Helicopter helicopter;
     private ArrayList<GameObject> go;
     private int numberOfFires;
-    private final int INIT_FUEL = 25000;
+    public static final int INIT_FUEL = 25000;
     private enum Result {LOST, WON}
 
     private GameWorld() { }
@@ -114,6 +114,10 @@ public class GameWorld{
 
     public void setDimension(Dimension worldSize) {
         this.worldSize = worldSize;
+    }
+
+    public Dimension getDimension() {
+        return worldSize;
     }
 
     public String getHeading() {

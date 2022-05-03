@@ -21,9 +21,10 @@ public class MapView extends Container {
         this.getAllStyles().setBgColor(ColorUtil.BLACK);
         this.getAllStyles().setBgTransparency(255);
     }
-
+//
     public void init(){
-        helicopter = new Helicopter(new Point(0, 0));
+        helicopter = new Helicopter(new Point(0, 0), GameWorld.INIT_FUEL,
+                                    GameWorld.getInstance().getDimension());
     }
 
     public void displayTransform(Graphics g){
@@ -42,10 +43,6 @@ public class MapView extends Container {
         g.setTransform(gXform);
     }
 
-//    public void updateLocalTransforms(){
-//        helicopter.updateLocalTransforms();
-//    }
-
     @Override
     public void laidOut(){
         gw.setDimension(new Dimension(this.getWidth(), this.getHeight()));
@@ -54,20 +51,26 @@ public class MapView extends Container {
 
     @Override
     public void paint(Graphics g) {
-        for (GameObject go: gw.getGameObjectCollection())
-            go.draw(g, new Point(this.getX(), this.getY()));
-
-        setupVTM(g);
+        super.paint(g);
 
         Point parentOrigin = new Point(this.getX(), this.getY());
         Point screenOrigin = new Point(getAbsoluteX(), getAbsoluteY());
 
-        displayTransform(g);
-        helicopter.draw(g, parentOrigin, screenOrigin);
-        g.resetAffine();
+//        displayTransform(g);
+
+        for (GameObject go: gw.getGameObjectCollection()) {
+            setupVTM(g);
+
+            go.draw(g, parentOrigin, screenOrigin);
+            //            go.draw(g, new Point(this.getX(), this.getY()));
+            helicopter.draw(g, parentOrigin, screenOrigin);
+            g.resetAffine();
+        }
     }
 
     public void updateLocalTransforms() {
+//        for (GameObject go: gw.getGameObjectCollection())
+//            go.updateLocalTransforms();
         helicopter.updateLocalTransforms();
     }
 

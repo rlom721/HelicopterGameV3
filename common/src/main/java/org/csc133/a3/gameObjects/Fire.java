@@ -68,7 +68,7 @@ public class Fire extends Fixed{
 
     public FireState getState() { return state; }
 
-    @Override
+//    @Override
     public void draw(Graphics g, Point containerOrigin) {
         g.setFont(Font.createSystemFont(FACE_SYSTEM, STYLE_BOLD, SIZE_MEDIUM));
         g.setColor(getColor());
@@ -81,5 +81,10 @@ public class Fire extends Fixed{
                     containerOrigin.getX() + getLocation().getX() + diameter,
                     containerOrigin.getY() + getLocation().getY() + diameter);
         }
+    }
+
+    @Override
+    public void localDraw(Graphics g, Point parentOrigin, Point originScreen) {
+
     }
 }
