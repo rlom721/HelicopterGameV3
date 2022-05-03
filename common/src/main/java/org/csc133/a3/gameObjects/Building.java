@@ -67,32 +67,20 @@ public class Building extends Fixed {
 
     public boolean isDestroyed() { return damage() >= 100; }
 
-//    @Override
-//    public void draw(Graphics g, Point containerOrigin) {
-//        g.setColor(getColor());
-//        g.drawRect(containerOrigin.getX() + getLocation().getX(),
-//                   containerOrigin.getY() + getLocation().getY(),
-//                        width(), height(), 5);
-//        g.drawString("V:  " + value,
-//                    containerOrigin.getX() + getLocation().getX() + width(),
-//                    containerOrigin.getY() + getLocation().getY() + height());
-//        g.drawString("D: " + damage() + "%",
-//                containerOrigin.getX() + getLocation().getX() + width(),
-//                containerOrigin.getY() + getLocation().getY() + height() + 30);
-//    }
-
     @Override
     public void localDraw(Graphics g, Point parentOrigin, Point originScreen) {
         g.setColor(getColor());
-        scale(-1, 1);
-        g.drawRect(originScreen.getX() + getLocation().getX(),
-                originScreen.getY() + getLocation().getY(),
-                width(), height(), 5);
+        g.drawRect( originScreen.getX() + getLocation().getX(),
+                    originScreen.getY() + getLocation().getY(),
+                    width(), height(), 5);
+//        g.scale(-1f, 1f);
         g.drawString("V:  " + value,
                 originScreen.getX() + getLocation().getX() + width(),
-                originScreen.getY() + getLocation().getY() + height());
+                originScreen.getY() + getLocation().getY());
+//                originScreen.getY() + getLocation().getY() + height());
         g.drawString("D: " + damage() + "%",
                 originScreen.getX() + getLocation().getX() + width(),
-                originScreen.getY() + getLocation().getY() + height() + 30);
+                originScreen.getY() + getLocation().getY() + 30);
+//                originScreen.getY() + getLocation().getY() + height() + 30);
     }
 }

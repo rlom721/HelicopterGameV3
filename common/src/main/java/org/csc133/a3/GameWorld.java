@@ -252,7 +252,7 @@ public class GameWorld{
 
     private Building addBuildingAboveRiver(){
         Point bLocation = new Point(worldSize.getWidth()/6,
-                                    worldSize.getHeight()/20);
+                (                   int)(0.8*worldSize.getHeight()));
         Dimension bDimension = new Dimension((int)(worldSize.getWidth()/1.5),
                                         worldSize.getHeight()/10);
         return new Building(bLocation, bDimension, worldSize);
@@ -261,7 +261,8 @@ public class GameWorld{
     private Building addBuildingBelowLeftRiver(){
         int riverLowerBound = river.getLocation().getY() + river.height();
         Point bLocation = new Point(  worldSize.getWidth()/12,
-                riverLowerBound + worldSize.getHeight()/10);
+                                    worldSize.getHeight()/6);
+//                riverLowerBound - worldSize.getHeight()/8);
         Dimension bDimension = new Dimension(worldSize.getWidth()/9,
                                             worldSize.getHeight()/3);
         return new Building(bLocation, bDimension, worldSize);
@@ -270,7 +271,8 @@ public class GameWorld{
     private Building addBuildingBelowRightRiver(){
         int riverLowerBound = river.getLocation().getY() + river.height();
         Point bLocation = new Point( (int)(worldSize.getWidth()/1.25),
-                riverLowerBound + worldSize.getHeight()/8);
+                                    worldSize.getHeight()/6);
+//                    riverLowerBound + worldSize.getHeight()/8);
         Dimension bDimension = new Dimension(worldSize.getWidth()/10,
                                             worldSize.getHeight()/3);
         return new Building(bLocation, bDimension, worldSize);

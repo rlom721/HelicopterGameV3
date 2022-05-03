@@ -3,8 +3,10 @@ package org.csc133.a3.gameObjects;
 import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.Font;
 import com.codename1.ui.Graphics;
+import com.codename1.ui.Transform;
 import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.geom.Point;
+import org.csc133.a3.Game;
 import org.csc133.a3.interfaces.Steerable;
 
 import java.util.ArrayList;
@@ -166,10 +168,10 @@ public class Helicopter extends Movable implements Steerable {
     //-------------------------------------------------------------------------
     private static class HeloBubble extends GameObject{
         public HeloBubble(){
-            setColor(ColorUtil.YELLOW);
+            setColor(ColorUtil.MAGENTA);
             setDimension(new Dimension(2*Helicopter.BUBBLE_RADIUS,
                     2*Helicopter.BUBBLE_RADIUS));
-            //translate();
+            translate(0, Helicopter.BUBBLE_RADIUS*0.80);
         }
 
         @Override

@@ -21,7 +21,7 @@ public class MapView extends Container {
         this.getAllStyles().setBgColor(ColorUtil.BLACK);
         this.getAllStyles().setBgTransparency(255);
     }
-//
+
     public void init(){
         helicopter = new Helicopter(new Point(0, 0), GameWorld.INIT_FUEL,
                                     GameWorld.getInstance().getDimension());
@@ -58,12 +58,25 @@ public class MapView extends Container {
 
 //        displayTransform(g);
 
+//        // move origin to center of display
+//        //
+//        Transform t = Transform.makeIdentity();
+//        g.getTransform(t);
+//        t.translate(getWidth()/2, getHeight()/2);
+//        g.setTransform(t);
+//
+//        // draw axis
+//        //
+//        g.setColor(ColorUtil.GRAY);
+//        g.drawLine(-getWidth()/2, 0, getWidth()/2, 0);
+//        g.drawLine(0, -getHeight()/2, 0, getWidth()/2);
+//
+//        helicopter.draw(g, parentOrigin, screenOrigin);
+
         for (GameObject go: gw.getGameObjectCollection()) {
             setupVTM(g);
 
             go.draw(g, parentOrigin, screenOrigin);
-            //            go.draw(g, new Point(this.getX(), this.getY()));
-            helicopter.draw(g, parentOrigin, screenOrigin);
             g.resetAffine();
         }
     }

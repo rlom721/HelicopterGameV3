@@ -21,8 +21,7 @@ public class Helipad extends Fixed{
         cOffset = 40;
         cSize = sSize - cOffset;
 
-        setLocation(new Point(  worldSize.getWidth()/2 - sSize/2,
-                                worldSize.getHeight() - sSize*2));
+        setLocation(new Point(  worldSize.getWidth()/2 - sSize/2, sSize/2));
         center = new Point( getLocation().getX() + sSize / 2,
                             getLocation().getY() + sSize / 2);
     }
@@ -30,17 +29,6 @@ public class Helipad extends Fixed{
     public Point getCenter() { return center; }
 
     int circleDiameter() { return cSize; }
-
-//    @Override
-//    public void draw(Graphics g, Point containerOrigin) {
-//        g.setColor(getColor());
-//        g.drawRect( containerOrigin.getX() + getLocation().getX(),
-//                    containerOrigin.getY() + getLocation().getY(),
-//                        sSize, sSize, 5);
-//        g.drawArc(  containerOrigin.getX() + getLocation().getX() + cOffset/2,
-//                    containerOrigin.getY() + getLocation().getY() + cOffset/2,
-//                        cSize, cSize, 0, 360);
-//    }
 
     @Override
     public void localDraw(Graphics g, Point parentOrigin, Point originScreen) {
