@@ -40,7 +40,6 @@ public class Helicopter extends Movable implements Steerable {
 
     public Helicopter(Point lz){
         heloParts = new ArrayList<>();
-
         heloParts.add(new HeloBubble());
     }
 

@@ -6,6 +6,7 @@ import com.codename1.ui.Graphics;
 import com.codename1.ui.Transform;
 import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.geom.Point;
+import org.csc133.a3.Game;
 import org.csc133.a3.GameWorld;
 import org.csc133.a3.gameObjects.GameObject;
 import org.csc133.a3.gameObjects.Helicopter;
@@ -56,6 +57,8 @@ public class MapView extends Container {
         for (GameObject go: gw.getGameObjectCollection())
             go.draw(g, new Point(this.getX(), this.getY()));
 
+        setupVTM(g);
+
         Point parentOrigin = new Point(this.getX(), this.getY());
         Point screenOrigin = new Point(getAbsoluteX(), getAbsoluteY());
 
@@ -66,6 +69,47 @@ public class MapView extends Container {
 
     public void updateLocalTransforms() {
         helicopter.updateLocalTransforms();
+    }
+
+    private Transform buildWorldToNDXform(float winWidth, float winHeight,
+                                               float winLeft, float winBottom){
+        Transform tmpXform = Transform.makeIdentity();
+        tmpXform.scale((1/winWidth), (1/winHeight));
+        tmpXform.translate(-winLeft, -winBottom);
+        return tmpXform;
+    }
+
+    private Transform buildNDToDisplayXform(float displayWidth,
+                                                float displayHeight){
+        Transform tmpXform = Transform.makeIdentity();
+        tmpXform.translate(0, displayHeight);
+        tmpXform.scale(displayWidth, -displayHeight);
+        return tmpXform;
+    }
+
+    private void setupVTM(Graphics g){
+        Transform worldToND, ndToDisplay, theVTM;
+        float winLeft, winRight, winTop, winBottom;
+
+        winLeft = winBottom = 0;
+        winRight = this.getWidth();
+        winTop = this.getHeight();
+
+        float winHeight = winTop - winBottom;
+        float winWidth = winRight - winLeft;
+
+        worldToND = buildWorldToNDXform(winWidth, winHeight,
+                                        winLeft, winBottom);
+        ndToDisplay = buildNDToDisplayXform(this.getWidth(), this.getHeight());
+        theVTM = ndToDisplay.copy();
+        theVTM.concatenate(worldToND);
+
+        Transform gxForm = Transform.makeIdentity();
+        g.getTransform(gxForm);
+        gxForm.translate(getAbsoluteX(), getAbsoluteY());
+        gxForm.concatenate(theVTM);
+        gxForm.translate(-getAbsoluteX(), -getAbsoluteY());
+        g.setTransform(gxForm);
     }
 
     // empty methods for helicopter commands?
