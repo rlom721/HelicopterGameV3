@@ -1,6 +1,8 @@
+org\csc133\a3\gameObjects\Helicopter$HeloTailSide.class
 org\csc133\a3\gameObjects\Helicopter$HeloBubble.class
 org\csc133\a3\views\GlassCockpit.class
 org\csc133\a3\gameObjects\parts\Arc.class
+org\csc133\a3\gameObjects\Helicopter$HeloTailRod.class
 org\csc133\a3\commands\FightCommand.class
 org\csc133\a3\gameObjects\Movable.class
 org\csc133\a3\gameObjects\River.class
@@ -26,6 +28,7 @@ org\csc133\a3\gameObjects\Helicopter$HeloEngineBlock.class
 org\csc133\a3\gameObjects\Helicopter$HeloRail.class
 org\csc133\a3\commands\BrakeCommand.class
 org\csc133\a3\commands\TurnLeftCommand.class
+org\csc133\a3\gameObjects\Helicopter$HeloTailEnd.class
 org\csc133\a3\AppMain.class
 org\csc133\a3\commands\AccelerateCommand.class
 org\csc133\a3\gameObjects\Burning.class
