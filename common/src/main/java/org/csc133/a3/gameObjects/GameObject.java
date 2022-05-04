@@ -122,4 +122,7 @@ public abstract class GameObject implements Drawable {
         localDraw(g, originParent, originScreen);
         restoreOriginalTransforms(g);
     }
+
+    public void updateLocalTransforms() {
+    }
 }

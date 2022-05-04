@@ -5,6 +5,7 @@ org\csc133\a3\gameObjects\parts\Arc.class
 org\csc133\a3\gameObjects\Helicopter$HeloTailRod.class
 org\csc133\a3\commands\FightCommand.class
 org\csc133\a3\gameObjects\Movable.class
+org\csc133\a3\gameObjects\NonPlayerHelicopter.class
 org\csc133\a3\gameObjects\River.class
 org\csc133\a3\interfaces\Steerable.class
 org\csc133\a3\commands\ExitCommand.class
@@ -19,6 +20,7 @@ org\csc133\a3\gameObjects\Building.class
 org\csc133\a3\gameObjects\FireState.class
 org\csc133\a3\GameWorld.class
 org\csc133\a3\gameObjects\Helicopter$HeloRailConnectorBottom.class
+org\csc133\a3\gameObjects\PlayerHelicopter.class
 org\csc133\a3\commands\TurnRightCommand.class
 org\csc133\a3\gameObjects\Helipad.class
 org\csc133\a3\gameObjects\Extinguished.class
@@ -33,6 +35,7 @@ org\csc133\a3\AppMain.class
 org\csc133\a3\commands\AccelerateCommand.class
 org\csc133\a3\gameObjects\Burning.class
 org\csc133\a3\gameObjects\Helicopter.class
+org\csc133\a3\gameObjects\FlightPath.class
 org\csc133\a3\gameObjects\Helicopter$HeloRailConnectorTop.class
 org\csc133\a3\gameObjects\Fire.class
 org\csc133\a3\interfaces\Drawable.class

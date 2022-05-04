@@ -57,7 +57,7 @@ public class Game extends Form implements Runnable {
         UITimer timer = new UITimer(this);
         timer.schedule(60, true, this);
         this.show();
-        mapView.init();
+//        mapView.init();
     }
 
     @Override

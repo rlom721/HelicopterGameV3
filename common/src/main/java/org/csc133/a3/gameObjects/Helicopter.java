@@ -356,10 +356,6 @@ public class Helicopter extends Movable implements Steerable {
     //-------------------------------------------------------------------------
     @Override
     public void localDraw(Graphics g, Point parentOrigin, Point screenOrigin) {
-//        Point newLocation = new Point(  parentOrigin.getX()
-//                                            + getLocation().getX(),
-//                                        parentOrigin.getY()
-//                                            + getLocation().getY());
         for (GameObject go : heloParts)
             go.draw(g, parentOrigin, screenOrigin);
 //        go.draw(g, newLocation, screenOrigin);

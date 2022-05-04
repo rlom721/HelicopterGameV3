@@ -70,17 +70,19 @@ public class Building extends Fixed {
     @Override
     public void localDraw(Graphics g, Point parentOrigin, Point originScreen) {
         g.setColor(getColor());
-        g.drawRect( originScreen.getX() + getLocation().getX(),
-                    originScreen.getY() + getLocation().getY(),
-                    width(), height(), 5);
-//        g.scale(1, -1);
+        containerTranslate(g, parentOrigin);
+        cn1ForwardPrimitiveTranslate(g, getDimension());
+
+        g.drawRect( parentOrigin.getX() + getLocation().getX(),
+                    parentOrigin.getY() + getLocation().getY(),
+                        width(), height(), 5);
+
+        g.scale(1, -1);
         g.drawString("V:  " + value,
-                originScreen.getX() + getLocation().getX() + width(),
-                originScreen.getY() + getLocation().getY());
-//                originScreen.getY() + getLocation().getY() + height());
+                parentOrigin.getX() + getLocation().getX() + width(),
+                parentOrigin.getY() + getLocation().getY());
         g.drawString("D: " + damage() + "%",
-                originScreen.getX() + getLocation().getX() + width(),
-                originScreen.getY() + getLocation().getY() + 30);
-//                originScreen.getY() + getLocation().getY() + height() + 30);
+                parentOrigin.getX() + getLocation().getX() + width(),
+                parentOrigin.getY() + getLocation().getY() + 30);
     }
 }

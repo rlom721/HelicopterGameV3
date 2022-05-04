@@ -22,14 +22,14 @@ public class MapView extends Container {
         this.getAllStyles().setBgTransparency(255);
     }
 
-    public void init(){
-        helicopter = new Helicopter(new Point((int)(6*Game.DISP_W),
-                                              Game.DISP_H/6),
-                                    GameWorld.INIT_FUEL,
-                                    GameWorld.getInstance().getDimension());
+//    public void init(){
+//        helicopter = new Helicopter(new Point((int)(6*Game.DISP_W),
+//                                              Game.DISP_H/6),
+//                                    GameWorld.INIT_FUEL,
+//                                    GameWorld.getInstance().getDimension());
 //        helicopter.translate(GameWorld.getHelipadLocation().getX(),
 //                            GameWorld.getHelipadLocation().getY());
-    }
+//    }
 
     @Deprecated
     public void displayTransform(Graphics g){
@@ -98,9 +98,9 @@ public class MapView extends Container {
     }
 
     public void updateLocalTransforms() {
-//        for (GameObject go: gw.getGameObjectCollection())
-//            go.updateLocalTransforms();
-        helicopter.updateLocalTransforms();
+        for (GameObject go: gw.getGameObjectCollection())
+            go.updateLocalTransforms();
+//        helicopter.updateLocalTransforms();
     }
 
     private Transform buildWorldToNDXform(float winWidth, float winHeight,
@@ -112,7 +112,7 @@ public class MapView extends Container {
     }
 
     private Transform buildNDToDisplayXform(float displayWidth,
-                                                float displayHeight){
+                                            float displayHeight){
         Transform tmpXform = Transform.makeIdentity();
         tmpXform.translate(0, displayHeight);
         tmpXform.scale(displayWidth, -displayHeight);
