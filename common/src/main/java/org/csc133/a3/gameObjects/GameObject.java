@@ -33,6 +33,10 @@ public abstract class GameObject implements Drawable {
 
     public Dimension getDimension() { return this.dimension; }
 
+    public int getWidth() { return this.dimension.getWidth(); }
+
+    public int getHeight() { return this.dimension.getHeight(); }
+
     public int getColor() { return this.color; }
 
     public void setWorldSize(Dimension worldSize) {
@@ -85,14 +89,14 @@ public abstract class GameObject implements Drawable {
         gXForm.scale(myScale.getScaleX(),myScale.getScaleY());
     }
 
-    void containerTranslate(Graphics g, Point parentOrigin){
+    protected void containerTranslate(Graphics g, Point parentOrigin){
         Transform gxForm = Transform.makeIdentity();
         g.getTransform(gxForm);
         gxForm.translate(parentOrigin.getX(), parentOrigin.getY());
         g.setTransform(gxForm);
     }
 
-    void cn1ForwardPrimitiveTranslate(Graphics g, Dimension pDimension){
+    protected void cn1ForwardPrimitiveTranslate(Graphics g, Dimension pDimension){
         Transform gxForm = Transform.makeIdentity();
         g.getTransform(gxForm);
         gxForm.translate(-pDimension.getWidth()/2, -pDimension.getHeight()/2);

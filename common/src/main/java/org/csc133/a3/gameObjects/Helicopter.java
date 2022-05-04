@@ -7,6 +7,8 @@ import com.codename1.ui.Transform;
 import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.geom.Point;
 import org.csc133.a3.Game;
+import org.csc133.a3.gameObjects.parts.Arc;
+import org.csc133.a3.gameObjects.parts.Rectangle;
 import org.csc133.a3.interfaces.Steerable;
 
 import java.util.ArrayList;
@@ -14,6 +16,9 @@ import java.util.ArrayList;
 import static com.codename1.ui.CN.*;
 
 public class Helicopter extends Movable implements Steerable {
+    private static final int BUBBLE_RADIUS = 125;
+    private static final int ENGINE_BLOCK_WIDTH = (int)(BUBBLE_RADIUS * 1.8);
+    private static final int ENGINE_BLOCK_HEIGHT = ENGINE_BLOCK_WIDTH/3;
     private Point center;
     final private int size;
     private int fuel, water;
@@ -21,7 +26,6 @@ public class Helicopter extends Movable implements Steerable {
     private double angle;
     final private int MAX_SPEED = 10;
     final private int MAX_WATER = 1000;
-    private static final int BUBBLE_RADIUS = 125;
     private ArrayList<GameObject> heloParts;
 
     public Helicopter(Point helipadCenter, int initFuel, Dimension worldSize){
@@ -44,12 +48,8 @@ public class Helicopter extends Movable implements Steerable {
         // add parts to hierarchical helicopter
         heloParts = new ArrayList<>();
         heloParts.add(new HeloBubble());
+        heloParts.add(new HeloEngineBlock());
     }
-
-//    public Helicopter(Point lz){
-//        heloParts = new ArrayList<>();
-//        heloParts.add(new HeloBubble());
-//    }
 
     @Override
     public void move() {
@@ -160,31 +160,58 @@ public class Helicopter extends Movable implements Steerable {
         return Math.sqrt(x * x + y * y) <= (double) (diameter / 2);
     }
 
-
     public void updateLocalTransforms() {
 
     }
 
     //-------------------------------------------------------------------------
-    private static class HeloBubble extends GameObject{
+    private static class HeloBubble extends Arc {
         public HeloBubble(){
-            setColor(ColorUtil.MAGENTA);
-            setDimension(new Dimension(2*Helicopter.BUBBLE_RADIUS,
-                    2*Helicopter.BUBBLE_RADIUS));
-            translate(0, Helicopter.BUBBLE_RADIUS*0.80);
+            super(  ColorUtil.MAGENTA,
+                    2*Helicopter.BUBBLE_RADIUS,
+                    2*Helicopter.BUBBLE_RADIUS,
+                    0, (float)(Helicopter.BUBBLE_RADIUS*0.80),
+                    1, 1,
+                    0,
+                    135, 270);
+        }
+
+//        @Override
+//        public void localDraw(Graphics g, Point parentOrigin,
+//                              Point screenOrigin){
+//            g.setColor(getColor());
+//            containerTranslate(g, parentOrigin);
+//            cn1ForwardPrimitiveTranslate(g, getDimension());
+//            g.drawArc(0, 0,
+//                    getDimension().getWidth(), getDimension().getHeight(),
+//                    135, 270);
+//        }
+    }
+    //-------------------------------------------------------------------------
+    private static class HeloEngineBlock extends Rectangle {
+        public HeloEngineBlock(){
+            super( ColorUtil.MAGENTA,
+                    Helicopter.ENGINE_BLOCK_WIDTH,
+                    Helicopter.ENGINE_BLOCK_HEIGHT,
+                    0, (float)(-Helicopter.ENGINE_BLOCK_HEIGHT/2),
+                    1, 1, 0);
+//            setColor(ColorUtil.MAGENTA);
+//            setDimension(new Dimension( Helicopter.ENGINE_BLOCK_WIDTH,
+//                                        Helicopter.ENGINE_BLOCK_HEIGHT));
+//            translate(0, -getDimension().getHeight()/2);
         }
 
         @Override
         public void localDraw(Graphics g, Point parentOrigin,
-                              Point screenOrigin){
+                              Point originScreen){
             g.setColor(getColor());
             containerTranslate(g, parentOrigin);
             cn1ForwardPrimitiveTranslate(g, getDimension());
-            g.drawArc(0, 0,
-                    getDimension().getWidth(), getDimension().getHeight(),
-                    135, 270);
+            g.drawRect(0, 0,
+                        getDimension().getWidth(), getDimension().getHeight());
         }
     }
+
     //-------------------------------------------------------------------------
 
     @Override
