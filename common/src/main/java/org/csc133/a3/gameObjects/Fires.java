@@ -12,12 +12,12 @@ public class Fires extends GameObjectCollection<Fire> {
     @Override
     public void localDraw(Graphics g, Point parentOrigin, Point originScreen) {
         for (Fire fire : getGameObjects())
-            fire.draw(g, originScreen);
+            fire.draw(g, parentOrigin, originScreen);
     }
 
 //    @Override
-    public void draw(Graphics g, Point containerOrigin) {
-        for (Fire fire : getGameObjects())
-            fire.draw(g, containerOrigin);
-    }
+//    public void draw(Graphics g, Point containerOrigin) {
+//        for (Fire fire : getGameObjects())
+//            fire.draw(g, parentOrigin, containerOrigin);
+//    }
 }

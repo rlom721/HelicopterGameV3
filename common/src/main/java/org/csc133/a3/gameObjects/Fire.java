@@ -7,7 +7,7 @@ import com.codename1.ui.geom.Point;
 import java.util.Random;
 import static com.codename1.ui.CN.*;
 
-public class Fire extends Fixed{
+public class Fire extends Fixed {
     private Point center;
     private int diameter;
     private FireState state;
@@ -21,7 +21,7 @@ public class Fire extends Fixed{
         this.building.setFireInBuilding(this);
         setDimension(new Dimension(diameter, diameter));
         this.center = new Point(getLocation().getX() + diameter / 2,
-                                getLocation().getY() + diameter / 2);
+                getLocation().getY() + diameter / 2);
         maxSize = 0;
     }
 
@@ -32,8 +32,8 @@ public class Fire extends Fixed{
         // increase diameter without changing the center of the fire
         //
         diameter += increase;
-        setLocation(new Point(  center.getX() - diameter/2,
-                                center.getY() - diameter/2));
+        setLocation(new Point(center.getX() - diameter / 2,
+                center.getY() - diameter / 2));
 
         if (getArea() > maxSize) maxSize = getArea();
     }
@@ -41,50 +41,59 @@ public class Fire extends Fixed{
     void shrink(int reduce) {
         diameter -= reduce;
         if (diameter < 0) diameter = 0;
-        setLocation(new Point(  center.getX() - diameter/2,
-                                center.getY() - diameter/2));
+        setLocation(new Point(center.getX() - diameter / 2,
+                center.getY() - diameter / 2));
     }
 
     public int getArea() {
-        int radius = diameter/2;
-        return (int)(Math.PI * radius * radius);
+        int radius = diameter / 2;
+        return (int) (Math.PI * radius * radius);
     }
 
-    Point getCenter() { return center; }
+    Point getCenter() {
+        return center;
+    }
 
-    public int diameter() { return diameter; }
+    public int diameter() {
+        return diameter;
+    }
 
-    public void setDiameter(int diameter) { this.diameter = diameter; }
+    public void setDiameter(int diameter) {
+        this.diameter = diameter;
+    }
 
-    void setFireState(FireState fireState){ state = fireState; }
+    void setFireState(FireState fireState) {
+        state = fireState;
+    }
 
-    public void start() { state.setNextState(this); }
+    public void start() {
+        state.setNextState(this);
+    }
 
     public void extinguish() {
         state.setNextState(this);
     }
 
-    public int getMaxSize() { return maxSize; }
+    public int getMaxSize() {
+        return maxSize;
+    }
 
-    public FireState getState() { return state; }
-
-//    @Override
-    public void draw(Graphics g, Point containerOrigin) {
-        g.setFont(Font.createSystemFont(FACE_SYSTEM, STYLE_BOLD, SIZE_MEDIUM));
-        g.setColor(getColor());
-
-        if (diameter > 0) {
-            g.fillArc(containerOrigin.getX() + getLocation().getX(),
-                    containerOrigin.getY() + getLocation().getY(),
-                       diameter, diameter, 0, 360);
-            g.drawString(Integer.toString(diameter),
-                    containerOrigin.getX() + getLocation().getX() + diameter,
-                    containerOrigin.getY() + getLocation().getY() + diameter);
-        }
+    public FireState getState() {
+        return state;
     }
 
     @Override
     public void localDraw(Graphics g, Point parentOrigin, Point originScreen) {
+        g.setFont(Font.createSystemFont(FACE_SYSTEM, STYLE_BOLD, SIZE_MEDIUM));
+        g.setColor(getColor());
 
+        if (diameter > 0) {
+            g.fillArc(parentOrigin.getX() + getLocation().getX(),
+                    parentOrigin.getY() + getLocation().getY(),
+                    diameter, diameter, 0, 360);
+            g.drawString(Integer.toString(diameter),
+                    parentOrigin.getX() + getLocation().getX() + diameter,
+                    parentOrigin.getY() + getLocation().getY() + diameter);
+        }
     }
 }

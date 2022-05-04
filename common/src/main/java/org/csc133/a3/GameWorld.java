@@ -16,7 +16,8 @@ public class GameWorld{
     private Dimension worldSize;
     private River river;
     private Helipad helipad;
-    private Helicopter helicopter;
+    private static Helicopter helicopter;
+    private static Point helipadLocation;
     private ArrayList<GameObject> go;
     private int numberOfFires;
     public static final int INIT_FUEL = 25000;
@@ -35,6 +36,8 @@ public class GameWorld{
         river = new River(worldSize);
         helipad = new Helipad(worldSize);
         helicopter = new Helicopter(helipad.getCenter(), INIT_FUEL, worldSize);
+//        helicopter.scale(-0.5d,-0.5d);
+        helipadLocation = helipad.getLocation();
         go = new ArrayList<>();
 
         go.add(river);
@@ -52,6 +55,8 @@ public class GameWorld{
         randomlyGrowFires();
         endGame();
     }
+
+    public Helicopter getHeli() { return helicopter;}
 
     public void accelerate() {
         helicopter.increaseSpeed();
@@ -79,6 +84,8 @@ public class GameWorld{
     }
 
     public void exit(){ Display.getInstance().exitApplication(); }
+
+    public static Point getHelipadLocation(){ return helipadLocation; }
 
     private void endGame() {
         if(helicopter.fuel() <= 0)

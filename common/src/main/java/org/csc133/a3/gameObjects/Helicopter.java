@@ -74,6 +74,8 @@ public class Helicopter extends Movable implements Steerable {
         heloParts.add(new HeloTailEnd());
         heloParts.add(new HeloTailSide(-1));
         heloParts.add(new HeloTailSide(1));
+        scale(0.5, 0.5);
+        translate(getLocation().getX(), getLocation().getY());
     }
 
     @Override
@@ -328,10 +330,10 @@ public class Helicopter extends Movable implements Steerable {
                               Point originScreen){
             g.drawLine(x1, y1, x2, y2);
 
-            int midX = x2/2;
-            int midY = -slope*midX;
+//            int midX = x2/2;
+//            int midY = -slope*midX;
 //            g.drawLine(x1, y1, -x2/2, y2/40);
-            g.drawLine(x1, y1, -midX, -midY);
+//            g.drawLine(x1, y1, -midX, -midY);
         }
     }
     //-------------------------------------------------------------------------
@@ -354,7 +356,12 @@ public class Helicopter extends Movable implements Steerable {
     //-------------------------------------------------------------------------
     @Override
     public void localDraw(Graphics g, Point parentOrigin, Point screenOrigin) {
+//        Point newLocation = new Point(  parentOrigin.getX()
+//                                            + getLocation().getX(),
+//                                        parentOrigin.getY()
+//                                            + getLocation().getY());
         for (GameObject go : heloParts)
             go.draw(g, parentOrigin, screenOrigin);
+//        go.draw(g, newLocation, screenOrigin);
     }
 }

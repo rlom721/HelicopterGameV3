@@ -73,7 +73,7 @@ public class Building extends Fixed {
         g.drawRect( originScreen.getX() + getLocation().getX(),
                     originScreen.getY() + getLocation().getY(),
                     width(), height(), 5);
-//        g.scale(-1f, 1f);
+//        g.scale(1, -1);
         g.drawString("V:  " + value,
                 originScreen.getX() + getLocation().getX() + width(),
                 originScreen.getY() + getLocation().getY());
