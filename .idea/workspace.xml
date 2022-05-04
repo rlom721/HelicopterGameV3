@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="336d32c5-6f4b-4a8f-b637-9fea310958e7" name="Default Changelist" comment="Added HeloEngineBlock and refactored HeloBubble to extend Arc">
+    <list default="true" id="336d32c5-6f4b-4a8f-b637-9fea310958e7" name="Default Changelist" comment="Added rotation for the heloBlade">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a3/gameObjects/Helicopter.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a3/gameObjects/Helicopter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/HornetsHDF-A3-common-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/HornetsHDF-A3-common-1.0-SNAPSHOT.jar" afterDir="false" />
@@ -832,7 +832,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651630520754</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added HeloBlade and HeloBladeShaft">
+      <created>1651633081117</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1651633081117</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -854,6 +861,8 @@
     <MESSAGE value="Refactored Building and Helipad localDraw to display using world coordinates" />
     <MESSAGE value="Fixed building locations in world coordinates" />
     <MESSAGE value="Added HeloEngineBlock and refactored HeloBubble to extend Arc" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added HeloEngineBlock and refactored HeloBubble to extend Arc" />
+    <MESSAGE value="Added HeloBlade and HeloBladeShaft" />
+    <MESSAGE value="Added rotation for the heloBlade" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added rotation for the heloBlade" />
   </component>
 </project>
