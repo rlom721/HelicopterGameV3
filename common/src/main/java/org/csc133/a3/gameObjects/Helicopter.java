@@ -19,6 +19,8 @@ public class Helicopter extends Movable implements Steerable {
     private static final int BUBBLE_RADIUS = 125;
     private static final int ENGINE_BLOCK_WIDTH = (int)(BUBBLE_RADIUS * 1.8);
     private static final int ENGINE_BLOCK_HEIGHT = ENGINE_BLOCK_WIDTH/3;
+    private static final int BLADE_LENGTH = BUBBLE_RADIUS*5;
+    private static final int BLADE_WIDTH = 25;
     private Point center;
     final private int size;
     private int fuel, water;
@@ -49,6 +51,8 @@ public class Helicopter extends Movable implements Steerable {
         heloParts = new ArrayList<>();
         heloParts.add(new HeloBubble());
         heloParts.add(new HeloEngineBlock());
+        heloParts.add(new HeloBlade());
+        heloParts.add(new HeloBladeShaft());
     }
 
     @Override
@@ -132,9 +136,7 @@ public class Helicopter extends Movable implements Steerable {
         setHeading(heading()-15);
     }
 
-    public int fuel() {
-        return fuel;
-    }
+    public int fuel() { return fuel; }
 
     // checks for collision with other object (passes in bounding box values)
     // x1: left bound, x2: right bound, y1: upper bound, y2 lower bound
@@ -175,25 +177,14 @@ public class Helicopter extends Movable implements Steerable {
                     0,
                     135, 270);
         }
-
-//        @Override
-//        public void localDraw(Graphics g, Point parentOrigin,
-//                              Point screenOrigin){
-//            g.setColor(getColor());
-//            containerTranslate(g, parentOrigin);
-//            cn1ForwardPrimitiveTranslate(g, getDimension());
-//            g.drawArc(0, 0,
-//                    getDimension().getWidth(), getDimension().getHeight(),
-//                    135, 270);
-//        }
     }
     //-------------------------------------------------------------------------
     private static class HeloEngineBlock extends Rectangle {
         public HeloEngineBlock(){
             super( ColorUtil.MAGENTA,
-                    Helicopter.ENGINE_BLOCK_WIDTH,
-                    Helicopter.ENGINE_BLOCK_HEIGHT,
-                    0, (float)(-Helicopter.ENGINE_BLOCK_HEIGHT/2),
+                    ENGINE_BLOCK_WIDTH,
+                    ENGINE_BLOCK_HEIGHT,
+                    0, (float)(-ENGINE_BLOCK_HEIGHT/2),
                     1, 1, 0);
 //            setColor(ColorUtil.MAGENTA);
 //            setDimension(new Dimension( Helicopter.ENGINE_BLOCK_WIDTH,
@@ -201,17 +192,40 @@ public class Helicopter extends Movable implements Steerable {
 //            translate(0, -getDimension().getHeight()/2);
         }
 
-        @Override
-        public void localDraw(Graphics g, Point parentOrigin,
-                              Point originScreen){
-            g.setColor(getColor());
-            containerTranslate(g, parentOrigin);
-            cn1ForwardPrimitiveTranslate(g, getDimension());
-            g.drawRect(0, 0,
-                        getDimension().getWidth(), getDimension().getHeight());
-        }
+//        @Override
+//        public void localDraw(Graphics g, Point parentOrigin,
+//                              Point originScreen){
+//            g.setColor(getColor());
+//            containerTranslate(g, parentOrigin);
+//            cn1ForwardPrimitiveTranslate(g, getDimension());
+//            g.drawRect(0, 0,
+//                        getDimension().getWidth(), getDimension().getHeight());
+//        }
     }
 
+    //-------------------------------------------------------------------------
+    private static class HeloBlade extends Rectangle{
+        public HeloBlade(){
+            super(ColorUtil.LTGRAY,
+                    BLADE_LENGTH,
+                    BLADE_WIDTH,
+                    0, -ENGINE_BLOCK_HEIGHT/2,
+                    1, 1,
+                    45);
+        }
+    }
+    //-------------------------------------------------------------------------
+    private static class HeloBladeShaft extends Arc{
+        public HeloBladeShaft() {
+            super(ColorUtil.GRAY,
+                    2 * Helicopter.BLADE_WIDTH / 3,
+                    2 * Helicopter.BLADE_WIDTH / 3,
+                    0, -Helicopter.ENGINE_BLOCK_HEIGHT / 2,
+                    1, 1,
+                    0, 0,
+                    360);
+        }
+    }
     //-------------------------------------------------------------------------
 
     @Override
