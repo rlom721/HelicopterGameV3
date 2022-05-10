@@ -43,8 +43,8 @@ public class GameWorld{
         go.add(river);
         go.add(helipad);
         go.add(addBuildingAboveRiver());
-        go.add(addBuildingBelowLeftRiver());
-        go.add(addBuildingBelowRightRiver());
+//        go.add(addBuildingBelowLeftRiver());
+//        go.add(addBuildingBelowRightRiver());
         placeFiresInBuilding();
         go.add(helicopter);
     }
@@ -259,9 +259,9 @@ public class GameWorld{
 
     private Building addBuildingAboveRiver(){
         Point bLocation = new Point(worldSize.getWidth()/6,
-                (                   int)(0.8*worldSize.getHeight()));
+                                    (int)(0.8*worldSize.getHeight()));
         Dimension bDimension = new Dimension((int)(worldSize.getWidth()/1.5),
-                                        worldSize.getHeight()/10);
+                                            worldSize.getHeight()/10);
         return new Building(bLocation, bDimension, worldSize);
     }
 

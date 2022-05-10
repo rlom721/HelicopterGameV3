@@ -263,7 +263,6 @@ public class Helicopter extends Movable implements Steerable {
                     Helicopter.RAIL_CONNECTOR_WIDTH,
                     Helicopter.RAIL_CONNECTOR_LENGTH,
                     (float) (Helicopter.ENGINE_BLOCK_WIDTH / 1.7) * heliSide,
-//                        - (float)(Helicopter.RAIL_CONNECTOR_WIDTH/2)*heliSide,
                     (float) (-ENGINE_BLOCK_HEIGHT / 2),
                     1, 1, 0);
         }
@@ -312,6 +311,7 @@ public class Helicopter extends Movable implements Steerable {
             g.fillRect(0, 0, getWidth(), getHeight());
         }
     }
+
     //-------------------------------------------------------------------------
     private static class HeloTailSide extends GameObject{
         int x1, x2, y1, y2;
@@ -336,6 +336,7 @@ public class Helicopter extends Movable implements Steerable {
 //            g.drawLine(x1, y1, -midX, -midY);
         }
     }
+
     //-------------------------------------------------------------------------
     private static class HeloTailEnd extends Rectangle{
         public HeloTailEnd(){
@@ -353,6 +354,7 @@ public class Helicopter extends Movable implements Steerable {
             g.fillRect(0, 0, getWidth(), getHeight());
         }
     }
+
     //-------------------------------------------------------------------------
     @Override
     public void localDraw(Graphics g, Point parentOrigin, Point screenOrigin) {

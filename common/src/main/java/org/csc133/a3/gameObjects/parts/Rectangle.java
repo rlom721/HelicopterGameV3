@@ -6,7 +6,9 @@ import com.codename1.ui.geom.Point;
 import org.csc133.a3.gameObjects.GameObject;
 
 public class Rectangle extends GameObject {
-    private Rectangle() { }
+    final private int thickness;
+
+//    protected Rectangle() { }
 
     public Rectangle(int c,
                      int w, int h,
@@ -18,6 +20,20 @@ public class Rectangle extends GameObject {
         translate(tx, ty);
         scale(sx, sy);
         rotate(degrees);
+        thickness = 1;
+    }
+
+    public Rectangle(int c,
+                     int w, int h,
+                     float tx, float ty,
+                     float sx, float sy,
+                     float degrees, int thickness) {
+        setColor(c);
+        setDimension(new Dimension(w, h));
+        translate(tx, ty);
+        scale(sx, sy);
+        rotate(degrees);
+        this.thickness = thickness;
     }
 
     @Override
@@ -25,6 +41,6 @@ public class Rectangle extends GameObject {
         g.setColor(getColor());
         containerTranslate(g, parentOrigin);
         cn1ForwardPrimitiveTranslate(g, getDimension());
-        g.drawRect(0, 0, getWidth(), getHeight());
-    };
+        g.drawRect(0, 0, getWidth(), getHeight(), thickness);
+    }
 }

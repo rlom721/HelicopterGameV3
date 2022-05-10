@@ -114,8 +114,6 @@ public abstract class GameObject implements Drawable {
                                    Point originScreen);
 
     public void draw(Graphics g, Point originParent, Point originScreen) {
-        // get the current transform and save it
-        //
         Transform gXForm = preLTTransform(g, originScreen);
         localTransforms(gXForm);
         postLTTransform(g, originScreen, gXForm);
@@ -124,5 +122,6 @@ public abstract class GameObject implements Drawable {
     }
 
     public void updateLocalTransforms() {
+
     }
 }

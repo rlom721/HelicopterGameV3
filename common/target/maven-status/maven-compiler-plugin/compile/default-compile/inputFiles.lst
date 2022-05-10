@@ -4,9 +4,11 @@ C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\commands\Brak
 C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\commands\ExitCommand.java
 C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\gameObjects\Fixed.java
 C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\AppMain.java
+C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\gameObjects\NonPlayerHelicopter.java
 C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\gameObjects\Fires.java
 C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\GameWorld.java
 C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\commands\FightCommand.java
+C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\gameObjects\FlightPath.java
 C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\gameObjects\Helipad.java
 C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\gameObjects\Helicopter.java
 C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\gameObjects\River.java
@@ -16,6 +18,7 @@ C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\gameObjects\B
 C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\gameObjects\Fire.java
 C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\views\ControlCluster.java
 C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\gameObjects\parts\Rectangle.java
+C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\gameObjects\PlayerHelicopter.java
 C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\gameObjects\Movable.java
 C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\commands\TurnLeftCommand.java
 C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\gameObjects\GameObject.java

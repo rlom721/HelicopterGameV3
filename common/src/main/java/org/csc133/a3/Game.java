@@ -16,7 +16,7 @@ import org.csc133.a3.views.MapView;
 //
 public class Game extends Form implements Runnable {
     final private GameWorld gw;
-    private MapView mapView;            // heloHolder
+    private MapView mapView;
     private GlassCockpit glassCockpit;
     private ControlCluster controlCluster;
 
@@ -57,7 +57,6 @@ public class Game extends Form implements Runnable {
         UITimer timer = new UITimer(this);
         timer.schedule(60, true, this);
         this.show();
-//        mapView.init();
     }
 
     @Override

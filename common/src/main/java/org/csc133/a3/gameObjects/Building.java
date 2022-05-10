@@ -14,15 +14,16 @@ public class Building extends Fixed {
     private Fires fires;
     final private int area;
 
-    public Building(Point location, Dimension dimension, Dimension worldSize) {
+    public Building(Point position, Dimension dimension, Dimension worldSize) {
         setWorldSize(worldSize);
         fires = new Fires();
         setColor(ColorUtil.rgb(255, 0, 0));
-        setLocation(location);
+        setLocation(position);
         setDimension(dimension);
         value = (width() % 10) * 100;
         area = dimension.getHeight()*dimension.getWidth();
         fireAreaBudget = 1000;
+//        translate(location.getX(), location.getY());
     }
 
     public void setFireInBuilding(Fire fire){
@@ -70,19 +71,14 @@ public class Building extends Fixed {
     @Override
     public void localDraw(Graphics g, Point parentOrigin, Point originScreen) {
         g.setColor(getColor());
-        containerTranslate(g, parentOrigin);
-        cn1ForwardPrimitiveTranslate(g, getDimension());
-
-        g.drawRect( parentOrigin.getX() + getLocation().getX(),
-                    parentOrigin.getY() + getLocation().getY(),
+        g.drawRect( parentOrigin.getX(),
+                    parentOrigin.getY(),
                         width(), height(), 5);
-
-        g.scale(1, -1);
         g.drawString("V:  " + value,
-                parentOrigin.getX() + getLocation().getX() + width(),
-                parentOrigin.getY() + getLocation().getY());
+                parentOrigin.getX() + width(),
+                    parentOrigin.getY());
         g.drawString("D: " + damage() + "%",
-                parentOrigin.getX() + getLocation().getX() + width(),
-                parentOrigin.getY() + getLocation().getY() + 30);
+                parentOrigin.getX() + width(),
+                parentOrigin.getY() + 30);
     }
 }
