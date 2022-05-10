@@ -23,6 +23,7 @@ public class Building extends Fixed {
     public Building(Point position, Dimension dimension, Dimension worldSize) {
         setWorldSize(worldSize);
         fires = new Fires();
+        position = getLocation();
         setLocation(position);
         setDimension(dimension);
         bRect = new Rectangle(ColorUtil.rgb(255, 0, 0),

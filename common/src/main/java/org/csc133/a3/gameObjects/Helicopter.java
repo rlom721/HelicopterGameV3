@@ -76,6 +76,7 @@ public class Helicopter extends Movable implements Steerable {
         heloParts.add(new HeloTailSide(1));
         scale(0.5, 0.5);
         translate(getLocation().getX(), getLocation().getY());
+//        translate(getLocation().getX(), getLocation().getY());
     }
 
     @Override

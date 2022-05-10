@@ -27,7 +27,12 @@ public abstract class GameObject implements Drawable {
 
     public void setColor(int color) { this.color = color; }
 
-    public Point getLocation(){ return this.location; }
+//    public Point getLocation(){ return this.location; }
+
+    public Point getLocation(){
+        return new Point((int)myTranslation.getTranslateX(),
+                         (int)myTranslation.getTranslateY());
+    }
 
     public Dimension getDimension() { return this.dimension; }
 
