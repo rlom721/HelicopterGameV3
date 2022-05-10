@@ -13,6 +13,7 @@ org\csc133\a3\gameObjects\Fixed.class
 org\csc133\a3\views\ControlCluster.class
 org\csc133\a3\gameObjects\GameObject.class
 org\csc133\a3\gameObjects\UnStarted.class
+org\csc133\a3\gameObjects\parts\Text.class
 org\csc133\a3\gameObjects\GameObjectCollection.class
 org\csc133\a3\gameObjects\parts\Rectangle.class
 org\csc133\a3\Game.class

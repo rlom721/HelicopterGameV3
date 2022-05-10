@@ -8,8 +8,6 @@ import org.csc133.a3.interfaces.Drawable;
 
 public abstract class GameObject implements Drawable {
     private Transform myTranslation, myRotation, myScale;
-    private int myColor;
-
     private Point location;
     private Dimension dimension;
     private int color;

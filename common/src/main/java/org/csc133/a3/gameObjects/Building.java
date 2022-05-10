@@ -4,6 +4,9 @@ import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.Graphics;
 import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.geom.Point;
+import org.csc133.a3.gameObjects.parts.Rectangle;
+import org.csc133.a3.gameObjects.parts.Text;
+
 import java.util.Random;
 
 public class Building extends Fixed {
@@ -13,17 +16,30 @@ public class Building extends Fixed {
     private int fireAreaBudget;
     private Fires fires;
     final private int area;
+    final private Rectangle bRect;
+    final private Text valueText;
+    final private Text damageText;
 
     public Building(Point position, Dimension dimension, Dimension worldSize) {
         setWorldSize(worldSize);
         fires = new Fires();
-        setColor(ColorUtil.rgb(255, 0, 0));
         setLocation(position);
         setDimension(dimension);
+        bRect = new Rectangle(ColorUtil.rgb(255, 0, 0),
+                                width(), height(),
+                                position.getX(), position.getY(),
+                                1, 1, 0, 5);
         value = (width() % 10) * 100;
         area = dimension.getHeight()*dimension.getWidth();
         fireAreaBudget = 1000;
-//        translate(location.getX(), location.getY());
+        valueText = new Text(ColorUtil.rgb(255, 0 , 0),
+                position.getX() + (float)(width()/2) + 20,
+                position.getY() + (float)(height()/2),
+                1, -1, "V:  " + value);
+        damageText = new Text(ColorUtil.rgb(255, 0 , 0),
+                position.getX() + (float)(width()/2) + 20,
+                position.getY() + (float)(height()/2) - 35,
+                1, -1, "D: " + damage() + "%");
     }
 
     public void setFireInBuilding(Fire fire){
@@ -70,15 +86,10 @@ public class Building extends Fixed {
 
     @Override
     public void localDraw(Graphics g, Point parentOrigin, Point originScreen) {
-        g.setColor(getColor());
-        g.drawRect( parentOrigin.getX(),
-                    parentOrigin.getY(),
-                        width(), height(), 5);
-        g.drawString("V:  " + value,
-                parentOrigin.getX() + width(),
-                    parentOrigin.getY());
-        g.drawString("D: " + damage() + "%",
-                parentOrigin.getX() + width(),
-                parentOrigin.getY() + 30);
+        bRect.draw(g, parentOrigin, originScreen);
+        valueText.draw(g, parentOrigin, originScreen);
+        valueText.updateText("V:  " + value);
+        damageText.draw(g, parentOrigin, originScreen);
+        damageText.updateText("D: " + damage() + "%");
     }
 }

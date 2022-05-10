@@ -4,30 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="336d32c5-6f4b-4a8f-b637-9fea310958e7" name="Default Changelist" comment="Fixed bug after deletion of MapView init. GameObjects can be instantiated in GameWorld now">
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a3/gameObjects/parts/Text.java" afterDir="false" />
+    <list default="true" id="336d32c5-6f4b-4a8f-b637-9fea310958e7" name="Default Changelist" comment="Created Text class to handle text translations">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a3/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a3/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a3/GameWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a3/GameWorld.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a3/gameObjects/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a3/gameObjects/Building.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a3/gameObjects/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a3/gameObjects/GameObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a3/gameObjects/Helicopter.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a3/gameObjects/Helicopter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a3/gameObjects/Helipad.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a3/gameObjects/Helipad.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a3/gameObjects/River.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a3/gameObjects/River.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a3/gameObjects/parts/Rectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a3/gameObjects/parts/Rectangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a3/views/MapView.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a3/views/MapView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a3/gameObjects/parts/Text.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a3/gameObjects/parts/Text.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/HornetsHDF-A3-common-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/HornetsHDF-A3-common-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/classes/org/csc133/a3/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/org/csc133/a3/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/classes/org/csc133/a3/GameWorld.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/org/csc133/a3/GameWorld.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/classes/org/csc133/a3/gameObjects/Building.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/org/csc133/a3/gameObjects/Building.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/classes/org/csc133/a3/gameObjects/GameObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/org/csc133/a3/gameObjects/GameObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/classes/org/csc133/a3/gameObjects/Helicopter.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/org/csc133/a3/gameObjects/Helicopter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/classes/org/csc133/a3/gameObjects/Helipad.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/org/csc133/a3/gameObjects/Helipad.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/classes/org/csc133/a3/gameObjects/River.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/org/csc133/a3/gameObjects/River.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/classes/org/csc133/a3/views/MapView.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/org/csc133/a3/views/MapView.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/codenameone/simulator.properties" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/codenameone/simulator.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/compliance-check.jar" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/compliance-check.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -888,7 +881,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651702694155</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Created Text class to handle text translations">
+      <created>1652206926103</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1652206926103</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -916,6 +916,8 @@
     <MESSAGE value="Added HeliTail and it's components. Finished basic helicopter." />
     <MESSAGE value="Created class shells for (Non)PlayerHelicopter and FlightPath to implement later" />
     <MESSAGE value="Fixed bug after deletion of MapView init. GameObjects can be instantiated in GameWorld now" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug after deletion of MapView init. GameObjects can be instantiated in GameWorld now" />
+    <MESSAGE value="Created Text class to handle objects" />
+    <MESSAGE value="Created Text class to handle text translations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Text class to handle text translations" />
   </component>
 </project>

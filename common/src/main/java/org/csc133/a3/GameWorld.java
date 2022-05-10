@@ -258,11 +258,11 @@ public class GameWorld{
     }
 
     private Building addBuildingAboveRiver(){
-        Point bLocation = new Point(worldSize.getWidth()/6,
-                                    (int)(0.8*worldSize.getHeight()));
-        Dimension bDimension = new Dimension((int)(worldSize.getWidth()/1.5),
+        Dimension dimension = new Dimension((int)(worldSize.getWidth()/1.5),
                                             worldSize.getHeight()/10);
-        return new Building(bLocation, bDimension, worldSize);
+        Point worldPosition = new Point((int)(0.75*dimension.getWidth()),
+                river.getLocation().getY()+ dimension.getHeight()*2);
+        return new Building(worldPosition, dimension, worldSize);
     }
 
     private Building addBuildingBelowLeftRiver(){

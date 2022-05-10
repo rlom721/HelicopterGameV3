@@ -4,10 +4,7 @@ import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.Graphics;
 import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.geom.Point;
-import org.csc133.a3.Game;
-import org.csc133.a3.GameWorld;
 import org.csc133.a3.gameObjects.parts.Rectangle;
-import org.w3c.dom.css.Rect;
 
 public class River extends Fixed {
     final private Rectangle riverBody;
@@ -16,9 +13,12 @@ public class River extends Fixed {
         setWorldSize(worldSize);
         setDimension(new Dimension( worldSize.getWidth(),
                               worldSize.getHeight()/8));
+        Point position = new Point((width()/2),
+                (int)(0.67*worldSize.getHeight()));
         riverBody = new Rectangle(ColorUtil.BLUE, width(), height(),
-                                    0, 0,  1, 1, 0);
-        translate((float)(width()/2), (int)(0.67*worldSize.getHeight()));
+                                    position.getX(), position.getY(),
+                                    1, 1, 0);
+        setLocation(position);
     }
 
     public int width() { return getDimension().getWidth(); }

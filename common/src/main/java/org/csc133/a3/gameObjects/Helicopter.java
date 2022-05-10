@@ -307,7 +307,7 @@ public class Helicopter extends Movable implements Steerable {
         @Override
         public void localDraw(Graphics g, Point parentOrigin,
                               Point originScreen) {
-            super.localDraw(g, parentOrigin, originScreen);
+//            super.localDraw(g, parentOrigin, originScreen);
             g.fillRect(0, 0, getWidth(), getHeight());
         }
     }
