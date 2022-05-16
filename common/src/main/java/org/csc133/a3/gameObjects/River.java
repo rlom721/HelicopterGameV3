@@ -13,12 +13,14 @@ public class River extends Fixed {
         setWorldSize(worldSize);
         setDimension(new Dimension( worldSize.getWidth(),
                               worldSize.getHeight()/8));
-        Point position = new Point((width()/2),
-                (int)(0.67*worldSize.getHeight()));
+        setLocation( new Point((width()/2),
+                    (int)(0.67*worldSize.getHeight())));
         riverBody = new Rectangle(ColorUtil.BLUE, width(), height(),
-                                    position.getX(), position.getY(),
+                                    getLocation().getX(), getLocation().getY(),
                                     1, 1, 0);
-        setLocation(position);
+//        riverBody = new Rectangle(ColorUtil.BLUE, width(), height(),
+//                (float)(width()/2), (int)(0.67*worldSize.getHeight()),
+//                1, 1, 0);
     }
 
     public int width() { return getDimension().getWidth(); }

@@ -1,20 +1,13 @@
 package org.csc133.a3.gameObjects;
 
 import com.codename1.charts.util.ColorUtil;
-import com.codename1.ui.Font;
 import com.codename1.ui.Graphics;
-import com.codename1.ui.Transform;
 import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.geom.Point;
-import org.csc133.a3.Game;
 import org.csc133.a3.gameObjects.parts.Arc;
 import org.csc133.a3.gameObjects.parts.Rectangle;
 import org.csc133.a3.interfaces.Steerable;
-
-import java.awt.*;
 import java.util.ArrayList;
-
-import static com.codename1.ui.CN.*;
 
 public class Helicopter extends Movable implements Steerable {
     private static final int BUBBLE_RADIUS = 125;
@@ -30,11 +23,11 @@ public class Helicopter extends Movable implements Steerable {
     private static final int TAIL_LENGTH = ENGINE_BLOCK_HEIGHT*4;
     private static final int TAIL_END_WIDTH = TAIL_WIDTH*7;
     private static final int TAIL_END_LENGTH = 20;
+    private final int ROTATE_ANGLE = 15;
     private Point center;
     final private int size;
     private int fuel, water;
-    private final int headingRadius;
-    private double angle;
+//    private final int headingRadius;
     final private int MAX_SPEED = 10;
     final private int MAX_WATER = 1000;
     private ArrayList<GameObject> heloParts;
@@ -46,14 +39,12 @@ public class Helicopter extends Movable implements Steerable {
         water = 0;
         setSpeed(0);
         setHeading(0);
-        angle = Math.toRadians(heading());
         size = worldSize.getHeight() / 40;
-        headingRadius = size * 2;
         heloParts = new ArrayList<>();
 
-        center = new Point(helipadCenter.getX(), helipadCenter.getY() + size);
-        setLocation(new Point(center.getX() - size / 2,
-                center.getY() - size / 2));
+        center = new Point(helipadCenter.getX(), helipadCenter.getY());
+        setLocation(new Point(  center.getX() - size/2,
+                                center.getY() - size/2));
         setColor(ColorUtil.YELLOW);
         setDimension(new Dimension(size, size));
 
@@ -74,17 +65,15 @@ public class Helicopter extends Movable implements Steerable {
         heloParts.add(new HeloTailEnd());
         heloParts.add(new HeloTailSide(-1));
         heloParts.add(new HeloTailSide(1));
-        scale(0.5, 0.5);
-        translate(getLocation().getX(), getLocation().getY());
-//        translate(getLocation().getX(), getLocation().getY());
+        scale(0.4, 0.4);
+        translate(helipadCenter.getX(), helipadCenter.getY());
     }
 
     @Override
     public void move() {
-        center = new Point(center.getX() + (int) (speed() * Math.cos(angle)),
-                center.getY() - (int) (speed() * Math.sin(angle)));
-        setLocation(new Point(center.getX() - size / 2,
-                center.getY() - size / 2));
+        double angle = Math.toRadians(heading()) + Math.PI/2;
+        translate(0.4*(int)(speed() * Math.cos(angle)),
+                0.4*(int)(speed() * Math.sin(angle)));
     }
 
     public void increaseSpeed() {
@@ -150,14 +139,16 @@ public class Helicopter extends Movable implements Steerable {
     public void steerLeft() {
         if (heading() < 0 || heading() > 360)
             setHeading(0);
-        setHeading(heading() + 15);
+        setHeading(heading() + ROTATE_ANGLE);
+        rotate(ROTATE_ANGLE);
     }
 
     @Override
     public void steerRight() {
         if (heading() < 0 || heading() > 360)
             setHeading(360);
-        setHeading(heading() - 15);
+        setHeading(heading() - ROTATE_ANGLE);
+        rotate(-ROTATE_ANGLE);
     }
 
     public int fuel() {
@@ -361,6 +352,5 @@ public class Helicopter extends Movable implements Steerable {
     public void localDraw(Graphics g, Point parentOrigin, Point screenOrigin) {
         for (GameObject go : heloParts)
             go.draw(g, parentOrigin, screenOrigin);
-//        go.draw(g, newLocation, screenOrigin);
     }
 }

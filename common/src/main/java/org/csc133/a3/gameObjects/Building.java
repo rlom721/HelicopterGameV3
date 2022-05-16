@@ -6,7 +6,6 @@ import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.geom.Point;
 import org.csc133.a3.gameObjects.parts.Rectangle;
 import org.csc133.a3.gameObjects.parts.Text;
-
 import java.util.Random;
 
 public class Building extends Fixed {
@@ -23,24 +22,29 @@ public class Building extends Fixed {
     public Building(Point position, Dimension dimension, Dimension worldSize) {
         setWorldSize(worldSize);
         fires = new Fires();
-        position = getLocation();
-        setLocation(position);
         setDimension(dimension);
+
+        // world coordinates - origin is lower left of world screen
+        //
+        setLocation(position);
+
         bRect = new Rectangle(ColorUtil.rgb(255, 0, 0),
                                 width(), height(),
-                                position.getX(), position.getY(),
+                                getLocation().getX(), getLocation().getY(),
                                 1, 1, 0, 5);
+
         value = (width() % 10) * 100;
         area = dimension.getHeight()*dimension.getWidth();
         fireAreaBudget = 1000;
-        valueText = new Text(ColorUtil.rgb(255, 0 , 0),
-                position.getX() + (float)(width()/2) + 20,
-                position.getY() + (float)(height()/2),
-                1, -1, "V:  " + value);
-        damageText = new Text(ColorUtil.rgb(255, 0 , 0),
-                position.getX() + (float)(width()/2) + 20,
-                position.getY() + (float)(height()/2) - 35,
-                1, -1, "D: " + damage() + "%");
+
+        valueText = new Text(   ColorUtil.rgb(255, 0 , 0),
+                            getLocation().getX() + (float)(width()/2) + 20,
+                                getLocation().getY(),
+                            1, -1, "V:  " + value);
+        damageText = new Text(  ColorUtil.rgb(255, 0 , 0),
+                            getLocation().getX() + (float)(width()/2) + 20,
+                            getLocation().getY() - 35,
+                            1, -1, "D: " + damage() + "%");
     }
 
     public void setFireInBuilding(Fire fire){

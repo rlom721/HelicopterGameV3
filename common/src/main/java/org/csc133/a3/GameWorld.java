@@ -17,7 +17,7 @@ public class GameWorld{
     private River river;
     private Helipad helipad;
     private static Helicopter helicopter;
-    private static Point helipadLocation;
+//    private static Point helipadLocation;
     private ArrayList<GameObject> go;
     private int numberOfFires;
     public static final int INIT_FUEL = 25000;
@@ -36,15 +36,14 @@ public class GameWorld{
         river = new River(worldSize);
         helipad = new Helipad(worldSize);
         helicopter = new Helicopter(helipad.getCenter(), INIT_FUEL, worldSize);
-//        helicopter.scale(-0.5d,-0.5d);
-        helipadLocation = helipad.getLocation();
+//        helipadLocation = helipad.getLocation();
         go = new ArrayList<>();
 
         go.add(river);
         go.add(helipad);
         go.add(addBuildingAboveRiver());
-//        go.add(addBuildingBelowLeftRiver());
-//        go.add(addBuildingBelowRightRiver());
+        go.add(addBuildingBelowLeftRiver());
+        go.add(addBuildingBelowRightRiver());
         placeFiresInBuilding();
         go.add(helicopter);
     }
@@ -55,8 +54,6 @@ public class GameWorld{
         randomlyGrowFires();
         endGame();
     }
-
-    public Helicopter getHeli() { return helicopter;}
 
     public void accelerate() {
         helicopter.increaseSpeed();
@@ -85,7 +82,7 @@ public class GameWorld{
 
     public void exit(){ Display.getInstance().exitApplication(); }
 
-    public static Point getHelipadLocation(){ return helipadLocation; }
+//    public static Point getHelipadLocation(){ return helipadLocation; }
 
     private void endGame() {
         if(helicopter.fuel() <= 0)
@@ -261,27 +258,23 @@ public class GameWorld{
         Dimension dimension = new Dimension((int)(worldSize.getWidth()/1.5),
                                             worldSize.getHeight()/10);
         Point worldPosition = new Point((int)(0.75*dimension.getWidth()),
-                river.getLocation().getY()+ dimension.getHeight()*2);
+                river.getLocation().getY() + dimension.getHeight()*2);
         return new Building(worldPosition, dimension, worldSize);
     }
 
     private Building addBuildingBelowLeftRiver(){
-        int riverLowerBound = river.getLocation().getY() + river.height();
-        Point bLocation = new Point(  worldSize.getWidth()/12,
-                                    worldSize.getHeight()/6);
-//                riverLowerBound - worldSize.getHeight()/8);
-        Dimension bDimension = new Dimension(worldSize.getWidth()/9,
+        Point worldPosition = new Point(  worldSize.getWidth()/8,
+                                          worldSize.getHeight()/3);
+        Dimension dimension = new Dimension(worldSize.getWidth()/9,
                                             worldSize.getHeight()/3);
-        return new Building(bLocation, bDimension, worldSize);
+        return new Building(worldPosition, dimension, worldSize);
     }
 
     private Building addBuildingBelowRightRiver(){
-        int riverLowerBound = river.getLocation().getY() + river.height();
-        Point bLocation = new Point( (int)(worldSize.getWidth()/1.25),
-                                    worldSize.getHeight()/6);
-//                    riverLowerBound + worldSize.getHeight()/8);
-        Dimension bDimension = new Dimension(worldSize.getWidth()/10,
+        Point worldPosition = new Point( (int)(0.85*worldSize.getWidth()),
                                             worldSize.getHeight()/3);
-        return new Building(bLocation, bDimension, worldSize);
+        Dimension dimension = new Dimension(worldSize.getWidth()/10,
+                                            worldSize.getHeight()/3);
+        return new Building(worldPosition, dimension, worldSize);
     }
 }

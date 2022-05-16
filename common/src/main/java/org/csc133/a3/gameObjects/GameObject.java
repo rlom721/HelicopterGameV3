@@ -19,6 +19,9 @@ public abstract class GameObject implements Drawable {
         myScale = Transform.makeIdentity();
     }
 
+    // location refers to position on view screen in world coordinates
+    // world origin is lower left corner of world screen
+    //
     public void setLocation(Point location){ this.location = location; }
 
     public void setDimension(Dimension dimension) {
@@ -27,11 +30,16 @@ public abstract class GameObject implements Drawable {
 
     public void setColor(int color) { this.color = color; }
 
-//    public Point getLocation(){ return this.location; }
+    public Point getLocation(){ return this.location; }
 
-    public Point getLocation(){
-        return new Point((int)myTranslation.getTranslateX(),
-                         (int)myTranslation.getTranslateY());
+//    public Point getLocation(){
+//        return new Point((int)myTranslation.getTranslateX(),
+//                         (int)myTranslation.getTranslateY());
+//    }
+
+    public Point getTranslation(){
+            return new Point((int)myTranslation.getTranslateX(),
+                             (int)myTranslation.getTranslateY());
     }
 
     public Dimension getDimension() { return this.dimension; }

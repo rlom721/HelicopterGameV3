@@ -1,6 +1,7 @@
 C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\interfaces\Drawable.java
 C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\commands\TurnRightCommand.java
 C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\commands\BrakeCommand.java
+C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\gameObjects\parts\Text.java
 C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\commands\ExitCommand.java
 C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\gameObjects\Fixed.java
 C:\Users\R\CSC133\HornetsHDF-A3\common\src\main\java\org\csc133\a3\AppMain.java
