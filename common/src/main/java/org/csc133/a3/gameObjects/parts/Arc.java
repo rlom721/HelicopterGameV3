@@ -9,7 +9,7 @@ public class Arc extends GameObject {
     private final int startAngle;
     private final int arcAngle;
 
-    private Arc() {
+    public Arc() {
         this.startAngle = 0;
         this.arcAngle = 0;
     }
@@ -34,6 +34,10 @@ public class Arc extends GameObject {
         translate(tx, ty);
         scale(sx, sy);
         rotate(degreesRotation);
+    }
+
+    public void setDiameter(int diameter) {
+        setDimension(new Dimension(diameter, diameter));
     }
 
     @Override

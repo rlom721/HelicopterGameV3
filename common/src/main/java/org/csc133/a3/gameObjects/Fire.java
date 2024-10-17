@@ -1,9 +1,13 @@
 package org.csc133.a3.gameObjects;
 
+import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.Font;
 import com.codename1.ui.Graphics;
 import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.geom.Point;
+import org.csc133.a3.gameObjects.parts.Arc;
+import org.csc133.a3.gameObjects.parts.Rectangle;
+
 import java.util.Random;
 import static com.codename1.ui.CN.*;
 
@@ -13,16 +17,23 @@ public class Fire extends Fixed {
     private FireState state;
     private Building building;
     private int maxSize;
+//    final private Arc fireBody;
 
     public Fire(Building building, Dimension worldSize) {
+        diameter = 0;
         setWorldSize(worldSize);
         state = UnStarted.getInstance();
         this.building = building;
         this.building.setFireInBuilding(this);
         setDimension(new Dimension(diameter, diameter));
         this.center = new Point(getLocation().getX() + diameter / 2,
-                getLocation().getY() + diameter / 2);
+                                getLocation().getY() + diameter / 2);
         maxSize = 0;
+//        fireBody = new Arc( ColorUtil.MAGENTA,
+//                            diameter, diameter,
+//                            0f, 0f, 1f, 1f,
+//                            0, 0, 360);
+//        translate(getLocation().getX(), getLocation().getY());
     }
 
     public void grow() {
@@ -59,6 +70,8 @@ public class Fire extends Fixed {
     }
 
     public void setDiameter(int diameter) {
+//        if (fireBody != null)
+//            fireBody.setDiameter(diameter);
         this.diameter = diameter;
     }
 
@@ -86,11 +99,14 @@ public class Fire extends Fixed {
     public void localDraw(Graphics g, Point parentOrigin, Point originScreen) {
         g.setFont(Font.createSystemFont(FACE_SYSTEM, STYLE_BOLD, SIZE_MEDIUM));
         g.setColor(getColor());
-
+//        containerTranslate(g, parentOrigin);
+//        cn1ForwardPrimitiveTranslate(g, getDimension());
+//        fireBody.setDiameter(diameter);
         if (diameter > 0) {
             g.fillArc(parentOrigin.getX() + getLocation().getX(),
                     parentOrigin.getY() + getLocation().getY(),
                     diameter, diameter, 0, 360);
+//            fireBody.draw(g, parentOrigin, originScreen);
             g.drawString(Integer.toString(diameter),
                     parentOrigin.getX() + getLocation().getX() + diameter,
                     parentOrigin.getY() + getLocation().getY() + diameter);
