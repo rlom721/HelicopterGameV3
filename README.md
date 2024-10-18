@@ -1,6 +1,7 @@
 # Helicopter Firefighter Game
 
-![Gameplay Preview](".\docs\GameplayDemo.mp4")
+https://github.com/user-attachments/assets/ce08cfff-664f-43ac-b58e-b868929b1877
+
 
 ![](./docs/Gameplay.png)
 
